@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Hyundai'nizi Oluşturun</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Step 1: Welcome Screen -->
+        <div class="screen active" id="welcomeScreen">
+            <div class="logo">
+                <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="50" cy="25" rx="45" ry="20" fill="none" stroke="#002C5F" stroke-width="3"/>
+                    <text x="50" y="32" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#002C5F" text-anchor="middle">HYUNDAI</text>
+                </svg>
+            </div>
+            <h1 class="main-title">Hyundai'nizi<br>Oluşturun</h1>
+            <p class="subtitle">Hayalinizdeki aracı keşfedin</p>
+            <button class="start-btn" onclick="goToStep(2)">Başlayın</button>
+        </div>
+
+        <!-- Step 2: Category Selection -->
+        <div class="screen" id="categoryScreen">
+            <div class="progress-bar">
+                <div class="progress" style="width: 33%;"></div>
+            </div>
+            <h2 class="screen-title">Kategori Seçin</h2>
+            <div class="categories">
+                <div class="category-card" onclick="selectCategory('electric')">
+                    <div class="category-icon">⚡</div>
+                    <h3>Elektrikli</h3>
+                    <p>IONIQ Serisi</p>
+                </div>
+                <div class="category-card" onclick="selectCategory('suv')">
+                    <div class="category-icon">🚙</div>
+                    <h3>SUV</h3>
+                    <p>TUCSON & KONA</p>
+                </div>
+                <div class="category-card" onclick="selectCategory('sedan')">
+                    <div class="category-icon">🚗</div>
+                    <h3>Sedan</h3>
+                    <p>i20 & i30</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Model & Color Selection -->
+        <div class="screen" id="modelScreen">
+            <div class="progress-bar">
+                <div class="progress" style="width: 66%;"></div>
+            </div>
+            <h2 class="screen-title">Modelinizi Özelleştirin</h2>
+            <div class="model-display">
+                <div class="model-name" id="modelName">IONIQ 5</div>
+                <div class="car-silhouette" id="carSilhouette">
+                    <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                        <path id="carBody" d="M 20 70 L 30 50 L 60 40 L 90 40 L 100 45 L 140 45 L 150 50 L 180 70 Z" fill="#00AAD2" stroke="#333" stroke-width="2"/>
+                        <circle cx="50" cy="75" r="10" fill="#333"/>
+                        <circle cx="150" cy="75" r="10" fill="#333"/>
+                        <path d="M 40 45 L 50 45 L 55 50 L 45 50 Z" fill="#1a1a1a" opacity="0.3"/>
+                        <path d="M 95 45 L 135 45 L 140 50 L 100 50 Z" fill="#1a1a1a" opacity="0.3"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="color-selector">
+                <p class="color-label">Renk Seçin:</p>
+                <div class="color-options">
+                    <div class="color-circle active" data-color="#00AAD2" onclick="selectColor('#00AAD2')"></div>
+                    <div class="color-circle" data-color="#FFFFFF" onclick="selectColor('#FFFFFF')"></div>
+                    <div class="color-circle" data-color="#1a1a1a" onclick="selectColor('#1a1a1a')"></div>
+                    <div class="color-circle" data-color="#C41E3A" onclick="selectColor('#C41E3A')"></div>
+                    <div class="color-circle" data-color="#4A4A4A" onclick="selectColor('#4A4A4A')"></div>
+                </div>
+            </div>
+            <button class="continue-btn" onclick="goToStep(4)">Devam Et</button>
+        </div>
+
+        <!-- Step 4: Final CTA -->
+        <div class="screen" id="finalScreen">
+            <div class="progress-bar">
+                <div class="progress" style="width: 100%;"></div>
+            </div>
+            <div class="checkmark">
+                <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="26" cy="26" r="25" fill="none" stroke="#4CAF50" stroke-width="2"/>
+                    <path fill="none" stroke="#4CAF50" stroke-width="3" d="M14 27 l7 7 l16 -16"/>
+                </svg>
+            </div>
+            <h2 class="screen-title">Hyundai'niz Hazır!</h2>
+            <p class="final-text">Seçiminizi tamamlayın ve<br>özel tekliflerimizi keşfedin</p>
+            <a href="https://www.hyundai.com/tr/tr/arac-satis/hyundainizi-olusturun/modeller" class="cta-btn" target="_blank">Şimdi Oluştur</a>
+            <button class="back-btn" onclick="goToStep(1)">Başa Dön</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
