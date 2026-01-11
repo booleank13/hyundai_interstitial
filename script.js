@@ -1,21 +1,30 @@
 // Global state
 let currentStep = 1;
 let selectedCategory = '';
-let selectedColor = '#00AAD2';
+let selectedColor = '#FFFFFF';
+let selectedColorName = 'Polar Beyazı';
 
 // Model data based on category
 const modelData = {
     electric: {
         name: 'IONIQ 5',
-        description: 'Yeni Nesil Elektrikli'
+        description: 'Yeni Nesil Elektrikli',
+        svgId: 'electricCar'
     },
     suv: {
         name: 'TUCSON',
-        description: 'Güçlü ve Şık SUV'
+        description: 'Güçlü ve Şık SUV',
+        svgId: 'suvCar'
     },
     sedan: {
         name: 'i30',
-        description: 'Konforlu Sedan'
+        description: 'Konforlu Binek',
+        svgId: 'sedanCar'
+    },
+    hybrid: {
+        name: 'TUCSON Hybrid',
+        description: 'Hibrit Teknoloji',
+        svgId: 'hybridCar'
     }
 };
 
@@ -71,6 +80,17 @@ function selectCategory(category) {
     // Update model name
     document.getElementById('modelName').textContent = model.name;
 
+    // Hide all car SVGs
+    document.querySelectorAll('#carSilhouette svg').forEach(svg => {
+        svg.style.display = 'none';
+    });
+
+    // Show the selected category car
+    const selectedCarSvg = document.getElementById(model.svgId);
+    if (selectedCarSvg) {
+        selectedCarSvg.style.display = 'block';
+    }
+
     // Add selection animation
     const cards = document.querySelectorAll('.category-card');
     cards.forEach(card => {
@@ -81,41 +101,66 @@ function selectCategory(category) {
     // Navigate to model screen
     setTimeout(() => {
         goToStep(3);
+        // Apply current color to new car
+        updateCarColor(selectedColor);
     }, 300);
 
     // Track category selection
     trackEvent('category_selected', { category: category, model: model.name });
 }
 
-// Select color
-function selectColor(color) {
-    selectedColor = color;
+// Update car color
+function updateCarColor(color) {
+    // Get all car body paths
+    const carBodyIds = ['carBody', 'carBodySUV', 'carBodySedan', 'carBodyHybrid'];
 
-    // Update active state
-    const circles = document.querySelectorAll('.color-circle');
-    circles.forEach(circle => {
-        circle.classList.remove('active');
-        if (circle.dataset.color === color || circle.getAttribute('onclick').includes(color)) {
-            circle.classList.add('active');
+    carBodyIds.forEach(id => {
+        const carBody = document.getElementById(id);
+        if (carBody) {
+            carBody.style.transition = 'fill 0.4s ease';
+            carBody.style.fill = color;
         }
     });
 
-    // Update car color with animation
-    const carBody = document.getElementById('carBody');
-    if (carBody) {
-        carBody.style.transition = 'fill 0.3s ease';
-        carBody.style.fill = color;
-
-        // Add pulse animation
-        const silhouette = document.getElementById('carSilhouette');
+    // Add pulse animation
+    const silhouette = document.getElementById('carSilhouette');
+    if (silhouette) {
         silhouette.style.transform = 'scale(1.05)';
         setTimeout(() => {
             silhouette.style.transform = 'scale(1)';
         }, 200);
     }
+}
+
+// Select color
+function selectColor(color, colorName) {
+    selectedColor = color;
+    selectedColorName = colorName;
+
+    // Update color name display
+    const colorNameEl = document.getElementById('colorName');
+    if (colorNameEl) {
+        colorNameEl.textContent = colorName;
+    }
+
+    // Update active state
+    const circles = document.querySelectorAll('.color-circle');
+    circles.forEach(circle => {
+        circle.classList.remove('active');
+        if (circle.dataset.color === color) {
+            circle.classList.add('active');
+        }
+    });
+
+    // Update car color with animation
+    updateCarColor(color);
 
     // Track color selection
-    trackEvent('color_selected', { color: color, category: selectedCategory });
+    trackEvent('color_selected', {
+        color: color,
+        colorName: colorName,
+        category: selectedCategory
+    });
 }
 
 // Event tracking function (for analytics)

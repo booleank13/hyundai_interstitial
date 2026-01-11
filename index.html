@@ -11,9 +11,17 @@
         <!-- Step 1: Welcome Screen -->
         <div class="screen active" id="welcomeScreen">
             <div class="logo">
-                <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="50" cy="25" rx="45" ry="20" fill="none" stroke="#002C5F" stroke-width="3"/>
-                    <text x="50" y="32" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#002C5F" text-anchor="middle">HYUNDAI</text>
+                <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Hyundai Logo - Oval -->
+                    <ellipse cx="100" cy="50" rx="90" ry="45" fill="none" stroke="#002C5F" stroke-width="5"/>
+
+                    <!-- Hyundai H - Stylized italic handshake -->
+                    <path d="M 45 30 L 48 70 L 58 70 L 55 30 Z" fill="#002C5F" transform="skewX(-8)"/>
+                    <path d="M 142 30 L 145 70 L 155 70 L 152 30 Z" fill="#002C5F" transform="skewX(-8)"/>
+                    <ellipse cx="100" cy="50" rx="55" ry="8" fill="#002C5F" transform="rotate(-5 100 50)"/>
+
+                    <!-- Shadow effect for depth -->
+                    <ellipse cx="100" cy="50" rx="50" ry="6" fill="#004080" opacity="0.3" transform="rotate(-5 100 51)"/>
                 </svg>
             </div>
             <h1 class="main-title">Hyundai'nizi<br>Oluşturun</h1>
@@ -29,19 +37,59 @@
             <h2 class="screen-title">Kategori Seçin</h2>
             <div class="categories">
                 <div class="category-card" onclick="selectCategory('electric')">
-                    <div class="category-icon">⚡</div>
-                    <h3>Elektrikli</h3>
-                    <p>IONIQ Serisi</p>
+                    <div class="category-icon">
+                        <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 25 5 L 15 25 L 22 25 L 18 45 L 35 20 L 28 20 L 35 5 Z" fill="#00AAD2" stroke="#002C5F" stroke-width="1.5"/>
+                            <circle cx="25" cy="25" r="23" fill="none" stroke="#00AAD2" stroke-width="2" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>Elektrikli Araçlar</h3>
+                        <p>IONIQ 5, IONIQ 6, KONA Electric</p>
+                    </div>
                 </div>
                 <div class="category-card" onclick="selectCategory('suv')">
-                    <div class="category-icon">🚙</div>
-                    <h3>SUV</h3>
-                    <p>TUCSON & KONA</p>
+                    <div class="category-icon">
+                        <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 5 25 L 10 15 L 20 10 L 35 10 L 45 15 L 50 20 L 55 25 L 55 30 L 5 30 Z" fill="#002C5F"/>
+                            <rect x="12" y="12" width="10" height="8" fill="white" opacity="0.3"/>
+                            <rect x="28" y="12" width="14" height="8" fill="white" opacity="0.3"/>
+                            <circle cx="15" cy="30" r="5" fill="#333"/>
+                            <circle cx="45" cy="30" r="5" fill="#333"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>SUV Modelleri</h3>
+                        <p>TUCSON, KONA, BAYON</p>
+                    </div>
                 </div>
                 <div class="category-card" onclick="selectCategory('sedan')">
-                    <div class="category-icon">🚗</div>
-                    <h3>Sedan</h3>
-                    <p>i20 & i30</p>
+                    <div class="category-icon">
+                        <svg viewBox="0 0 60 35" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 5 22 L 12 15 L 20 12 L 40 12 L 48 15 L 55 22 L 55 27 L 5 27 Z" fill="#002C5F"/>
+                            <rect x="14" y="14" width="8" height="6" fill="white" opacity="0.3"/>
+                            <rect x="30" y="14" width="12" height="6" fill="white" opacity="0.3"/>
+                            <circle cx="15" cy="27" r="4" fill="#333"/>
+                            <circle cx="45" cy="27" r="4" fill="#333"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>Binek Araçlar</h3>
+                        <p>i10, i20, i30</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="selectCategory('hybrid')">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 25 10 L 15 25 L 22 25 L 20 35" fill="none" stroke="#4CAF50" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="35" cy="25" r="8" fill="none" stroke="#4CAF50" stroke-width="2.5"/>
+                            <path d="M 30 25 L 35 20 L 35 30 L 40 25" fill="#4CAF50"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>Hibrit Modeller</h3>
+                        <p>TUCSON Hybrid, SANTA FE Hybrid</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,24 +103,175 @@
             <div class="model-display">
                 <div class="model-name" id="modelName">IONIQ 5</div>
                 <div class="car-silhouette" id="carSilhouette">
-                    <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
-                        <path id="carBody" d="M 20 70 L 30 50 L 60 40 L 90 40 L 100 45 L 140 45 L 150 50 L 180 70 Z" fill="#00AAD2" stroke="#333" stroke-width="2"/>
-                        <circle cx="50" cy="75" r="10" fill="#333"/>
-                        <circle cx="150" cy="75" r="10" fill="#333"/>
-                        <path d="M 40 45 L 50 45 L 55 50 L 45 50 Z" fill="#1a1a1a" opacity="0.3"/>
-                        <path d="M 95 45 L 135 45 L 140 50 L 100 50 Z" fill="#1a1a1a" opacity="0.3"/>
+                    <!-- Default: IONIQ 5 (Electric) -->
+                    <svg id="electricCar" viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Car body -->
+                        <path id="carBody" d="M 30 85 L 45 60 L 70 45 L 100 42 L 130 42 L 160 45 L 185 50 L 210 60 L 240 75 L 245 85 L 245 90 L 30 90 Z"
+                              fill="#00AAD2" stroke="#1a1a1a" stroke-width="1.5"/>
+
+                        <!-- Front windshield -->
+                        <path d="M 70 48 L 95 45 L 105 60 L 80 65 Z" fill="#2d3e50" opacity="0.7"/>
+
+                        <!-- Rear windshield -->
+                        <path d="M 170 48 L 195 55 L 200 70 L 175 68 Z" fill="#2d3e50" opacity="0.7"/>
+
+                        <!-- Side windows -->
+                        <path d="M 108 60 L 130 58 L 135 68 L 115 70 Z" fill="#2d3e50" opacity="0.5"/>
+                        <path d="M 138 68 L 168 66 L 173 70 L 143 72 Z" fill="#2d3e50" opacity="0.5"/>
+
+                        <!-- Front wheel well -->
+                        <ellipse cx="75" cy="90" rx="18" ry="18" fill="#1a1a1a"/>
+                        <ellipse cx="75" cy="90" rx="12" ry="12" fill="#4a4a4a"/>
+                        <ellipse cx="75" cy="90" rx="7" ry="7" fill="#2a2a2a"/>
+
+                        <!-- Rear wheel well -->
+                        <ellipse cx="210" cy="90" rx="18" ry="18" fill="#1a1a1a"/>
+                        <ellipse cx="210" cy="90" rx="12" ry="12" fill="#4a4a4a"/>
+                        <ellipse cx="210" cy="90" rx="7" ry="7" fill="#2a2a2a"/>
+
+                        <!-- Headlight -->
+                        <path d="M 32 75 L 38 72 L 40 78 L 34 80 Z" fill="#FFE5B4" opacity="0.8"/>
+
+                        <!-- Taillight -->
+                        <path d="M 240 78 L 243 75 L 245 82 L 242 84 Z" fill="#ff4444" opacity="0.7"/>
+
+                        <!-- Door line -->
+                        <line x1="120" y1="65" x2="120" y2="88" stroke="#1a1a1a" stroke-width="1.5" opacity="0.3"/>
+
+                        <!-- Side mirror -->
+                        <ellipse cx="68" cy="58" rx="5" ry="3" fill="#1a1a1a"/>
+
+                        <!-- Bottom shadow -->
+                        <ellipse cx="140" cy="95" rx="100" ry="8" fill="#000" opacity="0.15"/>
+                    </svg>
+
+                    <!-- SUV Model (Hidden by default) -->
+                    <svg id="suvCar" viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                        <!-- Taller SUV body -->
+                        <path id="carBodySUV" d="M 30 75 L 45 50 L 65 35 L 95 30 L 135 30 L 165 33 L 190 40 L 215 50 L 240 65 L 245 75 L 245 90 L 30 90 Z"
+                              fill="#00AAD2" stroke="#1a1a1a" stroke-width="1.5"/>
+
+                        <!-- Front windshield -->
+                        <path d="M 68 40 L 92 35 L 100 52 L 78 58 Z" fill="#2d3e50" opacity="0.7"/>
+
+                        <!-- Rear windshield -->
+                        <path d="M 175 38 L 198 45 L 205 62 L 182 62 Z" fill="#2d3e50" opacity="0.7"/>
+
+                        <!-- Side windows -->
+                        <path d="M 103 52 L 125 50 L 130 62 L 110 64 Z" fill="#2d3e50" opacity="0.5"/>
+                        <path d="M 135 62 L 170 60 L 178 66 L 140 68 Z" fill="#2d3e50" opacity="0.5"/>
+
+                        <!-- Front wheel -->
+                        <ellipse cx="75" cy="90" rx="20" ry="20" fill="#1a1a1a"/>
+                        <ellipse cx="75" cy="90" rx="14" ry="14" fill="#4a4a4a"/>
+                        <ellipse cx="75" cy="90" rx="8" ry="8" fill="#2a2a2a"/>
+
+                        <!-- Rear wheel -->
+                        <ellipse cx="210" cy="90" rx="20" ry="20" fill="#1a1a1a"/>
+                        <ellipse cx="210" cy="90" rx="14" ry="14" fill="#4a4a4a"/>
+                        <ellipse cx="210" cy="90" rx="8" ry="8" fill="#2a2a2a"/>
+
+                        <!-- Roof rack -->
+                        <rect x="95" y="28" width="85" height="3" fill="#4a4a4a" opacity="0.6"/>
+
+                        <!-- Headlight -->
+                        <path d="M 32 68 L 38 65 L 40 72 L 34 75 Z" fill="#FFE5B4" opacity="0.8"/>
+
+                        <!-- Taillight -->
+                        <path d="M 240 70 L 243 68 L 245 78 L 242 80 Z" fill="#ff4444" opacity="0.7"/>
+
+                        <!-- Door lines -->
+                        <line x1="118" y1="55" x2="118" y2="88" stroke="#1a1a1a" stroke-width="1.5" opacity="0.3"/>
+
+                        <!-- Side mirror -->
+                        <ellipse cx="65" cy="48" rx="6" ry="4" fill="#1a1a1a"/>
+
+                        <!-- Shadow -->
+                        <ellipse cx="140" cy="95" rx="105" ry="9" fill="#000" opacity="0.15"/>
+                    </svg>
+
+                    <!-- Sedan Model (Hidden by default) -->
+                    <svg id="sedanCar" viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                        <!-- Lower sedan body -->
+                        <path id="carBodySedan" d="M 30 82 L 50 65 L 75 52 L 105 48 L 135 48 L 165 50 L 190 55 L 215 65 L 240 78 L 245 82 L 245 90 L 30 90 Z"
+                              fill="#00AAD2" stroke="#1a1a1a" stroke-width="1.5"/>
+
+                        <!-- Front windshield -->
+                        <path d="M 78 55 L 100 52 L 108 68 L 88 72 Z" fill="#2d3e50" opacity="0.7"/>
+
+                        <!-- Rear windshield -->
+                        <path d="M 165 54 L 185 60 L 192 75 L 172 75 Z" fill="#2d3e50" opacity="0.7"/>
+
+                        <!-- Side windows -->
+                        <path d="M 112 68 L 132 66 L 137 75 L 117 77 Z" fill="#2d3e50" opacity="0.5"/>
+                        <path d="M 142 75 L 167 73 L 170 77 L 147 79 Z" fill="#2d3e50" opacity="0.5"/>
+
+                        <!-- Front wheel -->
+                        <ellipse cx="80" cy="90" rx="16" ry="16" fill="#1a1a1a"/>
+                        <ellipse cx="80" cy="90" rx="11" ry="11" fill="#4a4a4a"/>
+                        <ellipse cx="80" cy="90" rx="6" ry="6" fill="#2a2a2a"/>
+
+                        <!-- Rear wheel -->
+                        <ellipse cx="205" cy="90" rx="16" ry="16" fill="#1a1a1a"/>
+                        <ellipse cx="205" cy="90" rx="11" ry="11" fill="#4a4a4a"/>
+                        <ellipse cx="205" cy="90" rx="6" ry="6" fill="#2a2a2a"/>
+
+                        <!-- Headlight -->
+                        <path d="M 32 78 L 38 76 L 40 82 L 34 84 Z" fill="#FFE5B4" opacity="0.8"/>
+
+                        <!-- Taillight -->
+                        <path d="M 238 80 L 241 78 L 243 85 L 240 87 Z" fill="#ff4444" opacity="0.7"/>
+
+                        <!-- Door lines -->
+                        <line x1="125" y1="70" x2="125" y2="88" stroke="#1a1a1a" stroke-width="1.5" opacity="0.3"/>
+
+                        <!-- Side mirror -->
+                        <ellipse cx="75" cy="62" rx="5" ry="3" fill="#1a1a1a"/>
+
+                        <!-- Shadow -->
+                        <ellipse cx="140" cy="95" rx="95" ry="7" fill="#000" opacity="0.15"/>
+                    </svg>
+
+                    <!-- Hybrid Model (same as SUV but with hybrid badge) -->
+                    <svg id="hybridCar" viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                        <!-- Same as SUV -->
+                        <path id="carBodyHybrid" d="M 30 75 L 45 50 L 65 35 L 95 30 L 135 30 L 165 33 L 190 40 L 215 50 L 240 65 L 245 75 L 245 90 L 30 90 Z"
+                              fill="#00AAD2" stroke="#1a1a1a" stroke-width="1.5"/>
+                        <path d="M 68 40 L 92 35 L 100 52 L 78 58 Z" fill="#2d3e50" opacity="0.7"/>
+                        <path d="M 175 38 L 198 45 L 205 62 L 182 62 Z" fill="#2d3e50" opacity="0.7"/>
+                        <path d="M 103 52 L 125 50 L 130 62 L 110 64 Z" fill="#2d3e50" opacity="0.5"/>
+                        <path d="M 135 62 L 170 60 L 178 66 L 140 68 Z" fill="#2d3e50" opacity="0.5"/>
+                        <ellipse cx="75" cy="90" rx="20" ry="20" fill="#1a1a1a"/>
+                        <ellipse cx="75" cy="90" rx="14" ry="14" fill="#4a4a4a"/>
+                        <ellipse cx="75" cy="90" rx="8" ry="8" fill="#2a2a2a"/>
+                        <ellipse cx="210" cy="90" rx="20" ry="20" fill="#1a1a1a"/>
+                        <ellipse cx="210" cy="90" rx="14" ry="14" fill="#4a4a4a"/>
+                        <ellipse cx="210" cy="90" rx="8" ry="8" fill="#2a2a2a"/>
+                        <rect x="95" y="28" width="85" height="3" fill="#4a4a4a" opacity="0.6"/>
+                        <path d="M 32 68 L 38 65 L 40 72 L 34 75 Z" fill="#FFE5B4" opacity="0.8"/>
+                        <path d="M 240 70 L 243 68 L 245 78 L 242 80 Z" fill="#ff4444" opacity="0.7"/>
+                        <line x1="118" y1="55" x2="118" y2="88" stroke="#1a1a1a" stroke-width="1.5" opacity="0.3"/>
+                        <ellipse cx="65" cy="48" rx="6" ry="4" fill="#1a1a1a"/>
+                        <ellipse cx="140" cy="95" rx="105" ry="9" fill="#000" opacity="0.15"/>
+
+                        <!-- Hybrid badge -->
+                        <rect x="145" y="65" width="25" height="12" rx="3" fill="#4CAF50"/>
+                        <text x="157.5" y="73" font-family="Arial" font-size="8" font-weight="bold" fill="white" text-anchor="middle">HEV</text>
                     </svg>
                 </div>
             </div>
             <div class="color-selector">
                 <p class="color-label">Renk Seçin:</p>
                 <div class="color-options">
-                    <div class="color-circle active" data-color="#00AAD2" onclick="selectColor('#00AAD2')"></div>
-                    <div class="color-circle" data-color="#FFFFFF" onclick="selectColor('#FFFFFF')"></div>
-                    <div class="color-circle" data-color="#1a1a1a" onclick="selectColor('#1a1a1a')"></div>
-                    <div class="color-circle" data-color="#C41E3A" onclick="selectColor('#C41E3A')"></div>
-                    <div class="color-circle" data-color="#4A4A4A" onclick="selectColor('#4A4A4A')"></div>
+                    <div class="color-circle active" data-color="#FFFFFF" data-name="Polar Beyazı" onclick="selectColor('#FFFFFF', 'Polar Beyazı')">
+                        <div class="color-border"></div>
+                    </div>
+                    <div class="color-circle" data-color="#1C1C1C" data-name="Phantom Siyah" onclick="selectColor('#1C1C1C', 'Phantom Siyah')"></div>
+                    <div class="color-circle" data-color="#8B9196" data-name="Shimmering Silver" onclick="selectColor('#8B9196', 'Shimmering Silver')"></div>
+                    <div class="color-circle" data-color="#2B3E4D" data-name="Deep Sea Blue" onclick="selectColor('#2B3E4D', 'Deep Sea Blue')"></div>
+                    <div class="color-circle" data-color="#A82830" data-name="Engine Red" onclick="selectColor('#A82830', 'Engine Red')"></div>
                 </div>
+                <p class="color-name" id="colorName">Polar Beyazı</p>
             </div>
             <button class="continue-btn" onclick="goToStep(4)">Devam Et</button>
         </div>
